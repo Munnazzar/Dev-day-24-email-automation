@@ -1,14 +1,12 @@
 import pdfkit
 
-name= "testName"
-teamName= "testTeamName"
-position= "testPosition"
-imagePath= "letterDesign.png"
+def getLetter(name, teamName, position):
+    imagePath= "letterDesign.png"
 
-htmlcontent = f'''
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+    htmlcontent = f'''
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -39,8 +37,8 @@ htmlcontent = f'''
             z-index: -1;
         }}
     </style>
-  </head>
-  <body>
+    </head>
+    <body>
     <div class="container">
         <img src="{imagePath}" alt="">
         <div class="text">
@@ -51,11 +49,12 @@ htmlcontent = f'''
             <p>Once again, welcome to the team! We are thrilled to have you with us and can't wait to see what we will achieve together.</p>     
         </div>
     </div>
-  </body>
-</html>
-'''
+    </body>
+    </html>
+    '''
 
-htmlFile = open("temp.html","w")     
-htmlFile.write(htmlcontent)  
-htmlFile.close()
-pdfkit.from_file("temp.html", "letterTemplate.pdf")
+    htmlFile = open("temp.html","w")     
+    htmlFile.write(htmlcontent)  
+    htmlFile.close()
+    pdfkit.from_file("temp.html", "Appointment Letter.pdf")
+    return "Appointment Letter.pdf"

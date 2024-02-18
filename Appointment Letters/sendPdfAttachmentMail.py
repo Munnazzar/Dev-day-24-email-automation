@@ -3,16 +3,19 @@ from email.mime.text import MIMEText
 import smtplib
 from email.message import EmailMessage
 
-# Temporary method of getting the reciever's password
+# TODO Implement correct way of fetching the sender's password
+# Temporary method of getting the sender's password
 passFile = open("/home/c41f0n/Desktop/pass.txt", "r")
 password = passFile.readlines()[0].lstrip().rstrip()
 
 
-def sendPdfAttachmentMail(email, attachment):
+def sendPdfAttachmentMail(emailAddress, attachment):
 
+    # TODO Set global variable for sender
     sender = "k230703@nu.edu.pk"
+
     senderPassword = password
-    recieverMail = email
+    recieverMail = emailAddress
     msg = EmailMessage()
     msg["Subject"] = "Test Email With Attachment"
     msg["From"] = sender
@@ -47,12 +50,15 @@ def sendPdfAttachmentMail(email, attachment):
 
             # A last minute check to see if the sent mail is correct
             if recieverMail == sender:
-                check = input("All set?")
+                check = input("All set? (y/n):")
+
+                if check.lower() != "y":
+                    return 0
 
         except smtplib.SMTPResponseException as e:
             print(f"\n[-] Could not send mail to {recieverMail}: Error: {e.smtp_error}")
 
-            # Logging those to whome mails could not be sent
+            # Logging the mail as not sent with error message and timestamp
             unsuccessfulMailLog = open("notSentToEmails.log", "a")
             unsuccessfulMailLog.write(
                 f"{recieverMail} | Error: {e.smtp_error} | {datetime.datetime.now()}\n"
@@ -60,4 +66,4 @@ def sendPdfAttachmentMail(email, attachment):
             unsuccessfulMailLog.close()
 
 
-sendPdfAttachmentMail("k230703@nu.edu.pk", "test.pdf")
+# sendPdfAttachmentMail("k230703@nu.edu.pk", "test.pdf")

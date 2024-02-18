@@ -5,14 +5,13 @@ from email.message import EmailMessage
 
 # TODO Implement correct way of fetching the sender's password
 # Temporary method of getting the sender's password
-passFile = open("/home/c41f0n/Desktop/pass.txt", "r")
-password = passFile.readlines()[0].lstrip().rstrip()
-
+passFile = open("pass.txt", "r")
+password = passFile.readlines(  )[0].lstrip().rstrip()
 
 def sendPdfAttachmentMail(emailAddress, attachment):
 
     # TODO Set global variable for sender
-    sender = "k230703@nu.edu.pk"
+    sender = ""
 
     senderPassword = password
     recieverMail = emailAddress
@@ -54,6 +53,20 @@ def sendPdfAttachmentMail(emailAddress, attachment):
 
                 if check.lower() != "y":
                     return 0
+                
+        except smtplib.SMTPRecipientsRefused as e:
+            print(f"\n[-] Failed to send mail to {recieverMail}: Refused email.")
+
+            # loging refused emails
+            unsuccessfulMailLog = open("notSentToEmails.log", "a")
+            unsuccessfulMailLog.write(
+                f"{recieverMail} | Error: {e} | {datetime.datetime.now()}\n"
+            )
+            unsuccessfulMailLog.close()
+
+        except smtplib.SMTPAuthenticationError:
+            #invalid sender email or password
+            print("\n[-] Authentication error: Failed to authenticate with the SMTP server. Please check your email and password.")
 
         except smtplib.SMTPResponseException as e:
             print(f"\n[-] Could not send mail to {recieverMail}: Error: {e.smtp_error}")

@@ -10,5 +10,6 @@ def writeUnsuccessfullySentMail(row, logFilePath):
             writeUnsuccessfullySentMail.counter = 1
             
         writer.writerow(row)
-
+    csvFile.close()
+    
 writeUnsuccessfullySentMail.counter = 0                                             # to check whether the file is empty or not, 0 = empty

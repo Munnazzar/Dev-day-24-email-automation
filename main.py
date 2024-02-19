@@ -39,6 +39,7 @@ with open(csvFilePath, mode="r") as file:
             writeUnsuccessfullySentMail(record, unsentRecordsFilePath)
 
         lineCount += 1
+    file.close()
 
 # TODO add a check to only rename if unsent mails files exist
 # TODO rename the old csv to include date and time

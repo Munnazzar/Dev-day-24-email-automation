@@ -8,7 +8,7 @@ import shutil
 
 csvFilePath = "csvTest.csv"  # enter full file path, use \\ to avoid escape sequences
 unsentRecordsFilePath = "unsentMails.csv"  # log file path
-historyFolderName = "unsent_history"  # history folder name
+historyFolderName = "csvFile_history"  # history folder name
 
 with open(csvFilePath, mode="r") as file:
     csv_reader = csv.reader(file, delimiter=",")
@@ -41,22 +41,11 @@ with open(csvFilePath, mode="r") as file:
         lineCount += 1
     file.close()
 
-# TODO add a check to only rename if unsent mails files exist
-# TODO rename the old csv to include date and time
-# ({str(datetime.datetime.now()).split('.')[0]}{fileName} giving incorrect format error)
-
-# replacing the new created file of unsent mails with the previous csv file
-# fileName = os.path.basename(csvFilePath)
-# os.rename(csvFilePath, f"old {fileName}")
-# os.rename(unsentRecordsFilePath, fileName)
-
-
 # Creating history folder if doesnt exist
 if not os.path.exists(os.getcwd() + "/" + historyFolderName):
     os.makedirs(os.getcwd() + "/" + historyFolderName, exist_ok=True)
 
 # Copying the old csv data to history with timestamp
-
 shutil.copy2(
     csvFilePath,
     f"{os.curdir}/{historyFolderName}/",
@@ -70,8 +59,10 @@ os.rename(
 
 # renaming last unsent mails to main csv
 os.remove(csvFilePath)
-os.rename(unsentRecordsFilePath, csvFilePath)
 
+# check if unsentMails file exsist then rename it to csv file
+if os.path.exists(unsentRecordsFilePath):
+    os.rename(unsentRecordsFilePath, csvFilePath)
 
 print("=======================================================")
 print(f"Total records: {lineCount}")

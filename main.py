@@ -55,21 +55,20 @@ with open(csvFilePath, mode="r") as file:
 if not os.path.exists(os.getcwd() + "/" + historyFolderName):
     os.makedirs(os.getcwd() + "/" + historyFolderName, exist_ok=True)
 
-# Copying the unsent mails data to history
+# Copying the old csv data to history with timestamp
 
 shutil.copy2(
-    unsentRecordsFilePath,
-    f"{os.curdir}/unsent_history/",
+    csvFilePath,
+    f"{os.curdir}/{historyFolderName}/",
 )
 
-# Adding the timestamp
 now = datetime.datetime.now()
 os.rename(
-    f"{os.curdir}/unsent_history/{os.path.basename(unsentRecordsFilePath)}",
-    f"{os.curdir}/unsent_history/{os.path.basename(unsentRecordsFilePath)[:-4]}-{now.year}-{now.month}-{now.day}-{now.hour}-{now.minute}-{now.second}.csv",
+    f"{os.curdir}/{historyFolderName}/{os.path.basename(csvFilePath)}",
+    f"{os.curdir}/{historyFolderName}/{os.path.basename(csvFilePath)[:-4]}-{now.year}-{now.month}-{now.day}-{now.hour}-{now.minute}-{now.second}.csv",
 )
 
-# renaming last unsent mails to csv file path
+# renaming last unsent mails to main csv
 os.remove(csvFilePath)
 os.rename(unsentRecordsFilePath, csvFilePath)
 

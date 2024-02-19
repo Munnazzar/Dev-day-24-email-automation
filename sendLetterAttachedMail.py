@@ -11,7 +11,7 @@ password = passFile.readlines(  )[0].lstrip().rstrip()
 def sendPdfAttachmentMail(emailAddress, attachment):
 
     # TODO Set global variable for sender
-    sender = "asfand.khanzada0007@gmail.com"
+    sender = ""
 
     senderPassword = password
     recieverMail = emailAddress

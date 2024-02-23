@@ -52,7 +52,7 @@ def getHtmlContent(groupLink):
                 Excited to have you join Developers' Day 2024! Attached is your official appointment letter. Click below to instantly join our WhatsApp group. Happy coding!
             </p>
             <button>
-                <a href="https://chat.whatsapp.com/FiYIc117ELX1PjQzIDaDcW" style="color: white; text-decoration: none;">Whatsapp group</a> 
+                <a href={groupLink} style="color: white; text-decoration: none;">Whatsapp group</a> 
             </button>
         </div>
         </body>

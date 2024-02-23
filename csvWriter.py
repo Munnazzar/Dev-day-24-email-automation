@@ -39,15 +39,15 @@ def writeRecordsToCsv(records, logFilePath):
         writer = csv.writer(csvFile, delimiter=",")
 
         # Write the fields, which are the keys of the dictionary
-        fields = list(records.keys())
+        fields = list(records[0].keys())
         writer.writerow(fields)
 
-        totalRecords = len(records[fields[0]])
+        totalRecords = len(records)
 
-        for i in range(0, totalRecords):
+        for record in records:
             row = []
             for field in fields:
-                row.append(records[field][i])
+                row.append(record[field])
 
             writer.writerow(row)
 
@@ -56,7 +56,7 @@ def writeRecordsToCsv(records, logFilePath):
 
 def readRecordsFromCsv(logFilePath):
 
-    records = {}
+    records = []
 
     with open(logFilePath, mode="r", newline="") as csvFile:
         csvReader = csv.reader(csvFile, delimiter=",")
@@ -69,17 +69,15 @@ def readRecordsFromCsv(logFilePath):
             # If first row, initialize the dictionary keys as field values with arrays
             if lineCount == 0:
                 fields = row
-                for field in fields:
-                    records[field] = []
 
             # For the next rows, write each row's field data to the respective array
             else:
-
                 fieldIndex = 0
+                memberData = {}
                 for field in fields:
-                    records[field].append(row[fieldIndex])
+                    memberData[field] = row[fieldIndex]
                     fieldIndex += 1
-
+                records.append(memberData)
             lineCount += 1
 
     return records

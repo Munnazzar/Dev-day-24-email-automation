@@ -58,26 +58,29 @@ def readRecordsFromCsv(logFilePath):
 
     records = []
 
-    with open(logFilePath, mode="r", newline="") as csvFile:
-        csvReader = csv.reader(csvFile, delimiter=",")
+    try:
+        with open(logFilePath, mode="r", newline="") as csvFile:
+            csvReader = csv.reader(csvFile, delimiter=",")
 
-        lineCount = 0
-        fields = []
+            lineCount = 0
+            fields = []
 
-        for row in csvReader:
+            for row in csvReader:
 
-            # If first row, initialize the dictionary keys as field values with arrays
-            if lineCount == 0:
-                fields = row
+                # If first row, initialize the dictionary keys as field values with arrays
+                if lineCount == 0:
+                    fields = row
 
-            # For the next rows, write each row's field data to the respective array
-            else:
-                fieldIndex = 0
-                memberData = {}
-                for field in fields:
-                    memberData[field] = row[fieldIndex]
-                    fieldIndex += 1
-                records.append(memberData)
-            lineCount += 1
+                # For the next rows, write each row's field data to the respective array
+                else:
+                    fieldIndex = 0
+                    memberData = {}
+                    for field in fields:
+                        memberData[field] = row[fieldIndex]
+                        fieldIndex += 1
+                    records.append(memberData)
+                lineCount += 1
+    except FileNotFoundError:
+        pass
 
     return records

@@ -10,7 +10,7 @@ print("================================================\n")
 # someway to add group links
 groupLink = "www.google.com"
 
-unsentMailsCsvPath = "unsentRecords.xlsx"
+unsentMailsCsvPath = "unsentRecords.csv"
 sentMailsCsvPath = "sentRecords.csv"
 
 unsentRecords = readRecordsFromCsv(unsentMailsCsvPath)
@@ -25,10 +25,6 @@ try:
 
     while i < unsentLength:
         memberData = unsentRecords[i]
-        print(memberData["FULL NAME"])
-        print(memberData["Email Address"])
-        print(memberData["SELECT ON-DAY TEAM"])
-        print(memberData["SELECT POSITION"])
 
         letter = getLetter(
             memberData["FULL NAME"],

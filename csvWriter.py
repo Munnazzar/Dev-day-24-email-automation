@@ -1,5 +1,5 @@
 import csv
-
+import pandas as pd
 
 # def writeUnsuccessfullySentMail(row, logFilePath):
 #     with open(
@@ -86,4 +86,22 @@ def readRecordsFromCsv(logFilePath):
     except FileNotFoundError:
         pass
 
+    return records
+
+
+def readRecordsFromExcel(excelFilePath):
+    records = []
+    try:
+        
+        allSheetsDict = pd.read_excel(excelFilePath, sheet_name=None)
+        dfs = []
+        for sheetName, df in allSheetsDict.items():
+            df['Team Name'] = sheetName
+            dfs.append(df)
+
+        combinedDF = pd.concat(dfs, ignore_index=True)
+
+        records = combinedDF.to_dict('records')
+    except FileNotFoundError:
+        pass
     return records

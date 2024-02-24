@@ -1,15 +1,19 @@
 from sendLetterAttachedMail import sendPdfAttachmentMail
 from createLetter import getLetter
 from csvWriter import writeRecordsToCsv, readRecordsFromCsv
+from emailHtmlContent import getHtmlContent
 
-# enter full file path, use \\ to avoid escape sequences
+# someway to add group links
+groupLink= "www.google.com"
+
 unsentMailsCsvPath = "unsentRecords.csv"
 sentMailsCsvPath = "sentRecords.csv"
 
 unsentRecords = readRecordsFromCsv(unsentMailsCsvPath)
 sentRecords = readRecordsFromCsv(sentMailsCsvPath)
 
-unsentLength = len(unsentRecords)
+totalRecords= len(unsentRecords)
+unsentLength = totalRecords
 i = 0
 
 while i < unsentLength:
@@ -20,10 +24,11 @@ while i < unsentLength:
         memberData["SELECT ON-DAY TEAM"],
         memberData["SELECT POSITION"],
     )
+    
+    htmlContent= getHtmlContent(groupLink)
+
     # sort the data according to if the mail was sent or not
-    if sendPdfAttachmentMail(memberData["Email Address"], letter) == False:
-        pass
-    else:
+    if sendPdfAttachmentMail(memberData["Email Address"], letter,htmlContent) == True:
         unsentRecords.remove(memberData)
         sentRecords.append(memberData)
         i -= 1
@@ -32,5 +37,18 @@ while i < unsentLength:
     i += 1
 
 
-writeRecordsToCsv(unsentRecords, unsentMailsCsvPath)
-writeRecordsToCsv(sentRecords, sentMailsCsvPath)
+if writeRecordsToCsv(sentRecords, sentMailsCsvPath):
+    print("Sent records written to file")
+else:
+    print("No sent records")
+
+if writeRecordsToCsv(unsentRecords, unsentMailsCsvPath):
+    print("Unsent records written to file")
+else:
+    print("No unsent records")
+
+
+print("=======================================================")
+print(f"Total records: {totalRecords}")
+print(f"Successful mails: {totalRecords - unsentLength}")
+print(f"Unsuccessful mails: {unsentLength}")

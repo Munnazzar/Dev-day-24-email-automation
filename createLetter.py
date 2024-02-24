@@ -43,7 +43,7 @@ def getLetter(name, teamName, position):
         <img src="{imagePath}" alt="">
         <div class="text">
             <p>Dear {name}, <br><br></p>  
-            <p>Welcome to the team of the ACM - Developers' Day 2024. We are excited to have you on board and look forward to the contributions you will make as <b>{position}</b> Team <b>{teamName}</b>. <br><br></p>
+            <p>Welcome to the team of the ACM - Developers' Day 2024. We are excited to have you on board and look forward to the contributions you will make as <b>{position}</b> in Team <b>{teamName}</b>. <br><br></p>
             <p>It is worth acknowledging that the team of DevDay plays a crucial role in shaping the future of our event. Your involvement will be essential in crafting strategies and ensuring that our objectives align with the needs of our community. We believe in fostering a positive and collaborative work environment where everyone can grow and succeed together. <br><br> </p>
             <p>Our teams are committed to creating a supportive and inclusive environment where everyone's voices are heard and respected. We are confident that your addition to our team will further enhance our cohesion and effectiveness. <br><br></p>
             <p>Once again, welcome to the team! We are thrilled to have you with us and can't wait to see what we will achieve together.</p>     

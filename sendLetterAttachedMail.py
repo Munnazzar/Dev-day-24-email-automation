@@ -8,7 +8,7 @@ from email.message import EmailMessage
 passFile = open("pass.txt", "r")
 password = passFile.readlines(  )[0].lstrip().rstrip()
 
-def sendPdfAttachmentMail(emailAddress, attachment):
+def sendPdfAttachmentMail(emailAddress, attachment,htmlContent):
 
     # TODO Set global variable for sender
     sender = ""
@@ -27,8 +27,8 @@ def sendPdfAttachmentMail(emailAddress, attachment):
             content, maintype="application", subtype="pdf", filename=attachment
         )
 
-    # Enter body conteny here....
-    emailBody = MIMEText("this is a test mail to check the email automation and letter creation", "plain")
+    # Attaching the email design
+    emailBody = MIMEText(htmlContent, "html")
 
     msg.attach(emailBody)
 

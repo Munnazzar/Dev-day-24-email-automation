@@ -34,6 +34,9 @@ import csv
 
 
 def writeRecordsToCsv(records, logFilePath):
+    # in case records are empty
+    if not records:
+        return False
 
     with open(logFilePath, mode="w", newline="") as csvFile:
         writer = csv.writer(csvFile, delimiter=",")
@@ -52,7 +55,7 @@ def writeRecordsToCsv(records, logFilePath):
             writer.writerow(row)
 
     csvFile.close()
-
+    return True
 
 def readRecordsFromCsv(logFilePath):
 

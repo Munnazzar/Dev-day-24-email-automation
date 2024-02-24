@@ -1,10 +1,6 @@
-import os
-import csv
-import datetime
 from sendLetterAttachedMail import sendPdfAttachmentMail
 from createLetter import getLetter
 from csvWriter import writeRecordsToCsv, readRecordsFromCsv
-import shutil
 
 # enter full file path, use \\ to avoid escape sequences
 unsentMailsCsvPath = "unsentRecords.csv"

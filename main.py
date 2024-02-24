@@ -13,14 +13,6 @@ sentMailsCsvPath = "sentRecords.csv"
 unsentRecords = readRecordsFromCsv(unsentMailsCsvPath)
 sentRecords = readRecordsFromCsv(sentMailsCsvPath)
 
-print("Unsent Records:")
-for member in unsentRecords:
-    print(member["Email Address"])
-
-print("Sent Records:")
-for member in sentRecords:
-    print(member["Email Address"])
-
 unsentLength = len(unsentRecords)
 i = 0
 

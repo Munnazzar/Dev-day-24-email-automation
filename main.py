@@ -1,6 +1,6 @@
 from sendLetterAttachedMail import sendPdfAttachmentMail
 from createLetter import getLetter
-from csvWriter import writeRecordsToCsv, readRecordsFromCsv
+from csvWriter import writeRecordsToCsv, readRecordsFromCsv, readRecordsFromExcel
 from emailHtmlContent import getHtmlContent
 
 print("================================================")
@@ -10,7 +10,7 @@ print("================================================\n")
 # someway to add group links
 groupLink = "www.google.com"
 
-unsentMailsCsvPath = "unsentRecords.csv"
+unsentMailsCsvPath = "unsentRecords.xlsx"
 sentMailsCsvPath = "sentRecords.csv"
 
 unsentRecords = readRecordsFromCsv(unsentMailsCsvPath)
@@ -25,6 +25,10 @@ try:
 
     while i < unsentLength:
         memberData = unsentRecords[i]
+        print(memberData["FULL NAME"])
+        print(memberData["Email Address"])
+        print(memberData["SELECT ON-DAY TEAM"])
+        print(memberData["SELECT POSITION"])
 
         letter = getLetter(
             memberData["FULL NAME"],
@@ -60,7 +64,7 @@ finally:
         print("   [+] No sent records to write.")
 
     if writeRecordsToCsv(unsentRecords, unsentMailsCsvPath):
-        print("   [+] Unsent records written to file")
+       print("   [+] Unsent records written to file")
     else:
         print("   [+] No unsent records to write.")
 

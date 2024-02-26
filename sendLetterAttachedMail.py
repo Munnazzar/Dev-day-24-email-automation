@@ -16,7 +16,7 @@ def sendPdfAttachmentMail(emailAddress, attachment,htmlContent):
     senderPassword = password
     recieverMail = emailAddress
     msg = EmailMessage()
-    msg["Subject"] = "Test Email With Attachment"
+    msg["Subject"] = "Congratulations on Your Selection to the DevDay'24 Team"
     msg["From"] = sender
     msg["To"] = recieverMail
     msg["Cc"] = "k224626@nu.edu.pk"

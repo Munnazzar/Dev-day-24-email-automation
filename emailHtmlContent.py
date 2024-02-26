@@ -49,7 +49,7 @@ def getHtmlContent(groupLink):
             <img class="icon" src="https://i.ibb.co/Wg3dkTz/423240183-361800789943947-8451744917290406324-n-removebg-preview.png" alt="423240183-361800789943947-8451744917290406324-n-removebg-preview" border="0"></a>
             <h1>Welcome to the Dev Day'24 team</h1>
             <p>
-                Excited to have you join Developers' Day 2024! Attached is your official appointment letter. Click below to instantly join our WhatsApp group. Happy coding!
+                Excited to have you join Developers' Day 2024! Attached is your official appointment letter. Click below to instantly join our WhatsApp group.
             </p>
             <button>
                 <a href={groupLink} style="color: white; text-decoration: none;">Whatsapp group</a> 

@@ -19,6 +19,7 @@ def sendPdfAttachmentMail(emailAddress, attachment,htmlContent):
     msg["Subject"] = "Test Email With Attachment"
     msg["From"] = sender
     msg["To"] = recieverMail
+    msg["Cc"] = "k224626@nu.edu.pk"
 
     # Attach the pdf
     with open(attachment, "rb") as content_file:

@@ -28,7 +28,7 @@ whatsApplinks = {
     "SOP Team": "https://chat.whatsapp.com/FzkPTiaRoqG3XY0eKnGd4u",
     "Security": "https://chat.whatsapp.com/LENQf6zhudz1TGsfmE45OP",
     "Seminar": "https://chat.whatsapp.com/HZ8O61xkQVC8oN6JyEC8zA",
-    "Speed Progamming": "https://chat.whatsapp.com/DAB3dHMrHG3IwkQTJd3kq6",
+    "Speed Programming": "https://chat.whatsapp.com/DAB3dHMrHG3IwkQTJd3kq6",
     "UI/UX Competition": "https://chat.whatsapp.com/KGIzHfwQVvCDfL9057sw8r",
     "Web Development Competition": "https://chat.whatsapp.com/KgyWzpCdXyPCvuHIC7Phf0",
     "Web Development": "https://chat.whatsapp.com/IQfpOow7ALbE6uTHeT3KNN",

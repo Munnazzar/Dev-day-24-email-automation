@@ -19,7 +19,7 @@ def getHtmlContent(groupLink):
                     text-align: left;
                 }}
                 .icon{{
-                    height: 150px;
+                    height: 170px;
                     margin: auto;
                     display: block;
                 }}
@@ -49,10 +49,10 @@ def getHtmlContent(groupLink):
             <img class="icon" src="https://i.ibb.co/Wg3dkTz/423240183-361800789943947-8451744917290406324-n-removebg-preview.png" alt="423240183-361800789943947-8451744917290406324-n-removebg-preview" border="0"></a>
             <h1>Welcome to the Dev Day'24 team</h1>
             <p>
-                Excited to have you join Developers' Day 2024! Attached is your official appointment letter. Click below to instantly join our WhatsApp group.
+                We are excited to have you join Developers' Day 2024! Attached is your official appointment letter. Click below to instantly join the WhatsApp group.
             </p>
             <button>
-                <a href={groupLink} style="color: white; text-decoration: none;">Whatsapp group</a> 
+                <a href={groupLink} style="color: white; text-decoration: none;">Join our Whatsapp group</a> 
             </button>
         </div>
         </body>

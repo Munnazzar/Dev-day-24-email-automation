@@ -5,13 +5,14 @@ from email.message import EmailMessage
 
 # TODO Implement correct way of fetching the sender's password
 # Temporary method of getting the sender's password
-passFile = open("pass.txt", "r")
-password = passFile.readlines(  )[0].lstrip().rstrip()
+# passFile = open("pass.txt", "r")
+# password = passFile.readlines(  )[0].lstrip().rstrip()
+password=""
 
 def sendPdfAttachmentMail(emailAddress, attachment,htmlContent):
 
     # TODO Set global variable for sender
-    sender = ""
+    sender = "acm.khi@nu.edu.pk"
 
     senderPassword = password
     recieverMail = emailAddress
@@ -19,7 +20,7 @@ def sendPdfAttachmentMail(emailAddress, attachment,htmlContent):
     msg["Subject"] = "Congratulations on Your Selection to the DevDay'24 Team"
     msg["From"] = sender
     msg["To"] = recieverMail
-    msg["Cc"] = "k224626@nu.edu.pk"
+    msg["Cc"] = "k200240@nu.edu.pk"
 
     # Attach the pdf
     with open(attachment, "rb") as content_file:
